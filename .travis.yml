@@ -6,7 +6,7 @@ install:
 script:
   - python -m unittest discover
   - coverage erase
-  - coverage coverage run -m pytest && coverage html
+  - coverage run -m pytest && coverage html
 
 after_success:
   - codecov

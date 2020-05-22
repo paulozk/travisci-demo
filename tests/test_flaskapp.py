@@ -28,7 +28,7 @@ class MyTestCase(unittest.TestCase):
         # then
         self.assertEqual("Hello World!", answer)
 
-    def test_hello_sad(self):
+
 
 
 
