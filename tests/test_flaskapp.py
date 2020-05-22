@@ -1,24 +1,44 @@
-import unittest,json
+import unittest
 
-from main import app
+from main import *
 
 
-class FlaskTestCase(unittest.TestCase):
+class MyTestCase(unittest.TestCase):
     def setUp(self):
-        app.config['TESTING'] = True
-        self.app = app.test_client()
+        pass
 
-    def test_unauthorized(self):
-        response = self.app.get('/authorized')
-        # Check if the request fails with authorization error
-        self.assertEqual(response._status_code,401,'Unauthorized access to page without login')
+    def tearDown(self):
+        pass
 
     def test_multiply(self):
-        response = self.app.get('/multiply?x=5&y=7')
-        resp = json.loads(response.data.decode())
-        self.assertEqual(resp['answer'],35,'Multiply endpoint failed known answer 7*5 = 35')
-
+        # given
+        x = 10
+        y = 12
+        # when
+        answer = multiply(x, y)
+        # then
+        self.assertEqual(answer, 120)
     # TODO DEFINE TWO MORE TESTS ON THE END POINTS
+
+    def test_hello(self):
+        # given
+
+        # when
+        answer = hello()
+        # then
+        self.assertEqual("Hello World!", answer)
+
+    def test_hello_sad(self):
+
+
+
+    def test_to_uppercase(self):
+        # given
+        s = "hello"
+        # when
+        answer = to_uppercase(s)
+        # then
+        self.assertEqual("HELLO", answer)
 
 
 if __name__ == '__main__':
